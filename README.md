@@ -28,8 +28,8 @@
 
 MailHog を使用することで、開発中のメール送信をローカルで確認できます。実際にメールは送信されず、Web画面で内容をチェックできます。
 
-- メール送信設定
-  1.（`.env` に追記）:
+メール送信設定
+1.（`.env` に追記）:
 
   ```env
   MAIL_MAILER=smtp  
@@ -40,7 +40,7 @@ MailHog を使用することで、開発中のメール送信をローカルで
   MAIL_ENCRYPTION=null  
   MAIL_FROM_ADDRESS=example@example.com  
   MAIL_FROM_NAME="${APP_NAME}"
-  2. `php artisan config:clear`
+2. `php artisan config:clear`
 
 ## 使用技術🔗
 
