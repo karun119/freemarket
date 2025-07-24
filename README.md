@@ -31,7 +31,8 @@
 - Composer 2.8.10  
 - MySQL 8.0.26  
 - Nginx 1.21.1  
-- [phpMyAdmin（http://localhost:8080）](http://localhost:8080)  
+- [phpMyAdmin（http://localhost:8080）](http://localhost:8080)
+- [MailHog　(http://localhost:8025) ](http://localhost:8025) 
 - Docker / Docker Compose
 
 ---
