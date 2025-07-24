@@ -31,7 +31,6 @@ MailHog を使用することで、開発中のメール送信をローカルで
 メール送信設定
 1.（`.env` に追記）:
 
-  ```env
   MAIL_MAILER=smtp  
   MAIL_HOST=mailhog  
   MAIL_PORT=1025  
@@ -40,6 +39,7 @@ MailHog を使用することで、開発中のメール送信をローカルで
   MAIL_ENCRYPTION=null  
   MAIL_FROM_ADDRESS=example@example.com  
   MAIL_FROM_NAME="${APP_NAME}"
+  
 2. `php artisan config:clear`
 
 ## 使用技術🔗
