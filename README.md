@@ -24,23 +24,28 @@
 
 ---
 
-### 📧 メールテスト環境（MailHog）
+### メールテスト環境（MailHog）　📧
 
-MailHog を使用することで、開発中のメール送信をローカルで確認できます。実際にメールは送信されず、Web画面で内容をチェックできます。
+MailHog を使用することで、開発中のメール送信内容をローカルのWeb画面で確認できます。
+（実際の送信はされません）
 
-メール送信設定
-1.（`.env` に追記）:
+### メール送信設定手順
+1. `.env` に以下を追記してください
 
-  MAIL_MAILER=smtp  
-  MAIL_HOST=mailhog  
-  MAIL_PORT=1025  
-  MAIL_USERNAME=null  
-  MAIL_PASSWORD=null  
-  MAIL_ENCRYPTION=null  
-  MAIL_FROM_ADDRESS=example@example.com  
-  MAIL_FROM_NAME="${APP_NAME}"
-  
-2. `php artisan config:clear`
+      MAIL_MAILER=smtp  
+      MAIL_HOST=mailhog  
+      MAIL_PORT=1025  
+      MAIL_USERNAME=null  
+      MAIL_PASSWORD=null  
+      MAIL_ENCRYPTION=null  
+      MAIL_FROM_ADDRESS=example@example.com  
+      MAIL_FROM_NAME="${APP_NAME}"
+
+2. 設定変更後は以下のコマンドでキャッシュをクリアしてください。
+
+   `php artisan config:clear`
+
+---
 
 ## 使用技術🔗
 
