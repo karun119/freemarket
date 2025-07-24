@@ -28,7 +28,7 @@
 
 - Laravel 8.75  
 - PHP 7.4.9  
-- Composer 2.8.9  
+- Composer 2.8.10  
 - MySQL 8.0.26  
 - Nginx 1.21.1  
 - [phpMyAdmin（http://localhost:8080）](http://localhost:8080)  
