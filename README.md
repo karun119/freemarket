@@ -4,7 +4,7 @@
 
 ### Dockerビルド手順
 
-1. `git clone git@github.com:karun119/freemarket.git` 
+1. `git clone` git@github.com:karun119/freemarket.git
 2. `docker-compose up -d --build`
 
 > ※MySQLは、OSによって起動しない場合があります。  
