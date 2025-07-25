@@ -38,7 +38,7 @@ MailHog を使用することで、開発中のメール送信内容をローカ
       MAIL_USERNAME=null  
       MAIL_PASSWORD=null  
       MAIL_ENCRYPTION=null  
-      MAIL_FROM_ADDRESS=example@example.com  
+      MAIL_FROM_ADDRESS=test@example.com  
       MAIL_FROM_NAME="${APP_NAME}"
 
 2. 設定変更後は以下のコマンドでキャッシュをクリアしてください。
