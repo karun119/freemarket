@@ -61,6 +61,7 @@ MailHog を使用することで、開発中のメール送信内容をローカ
 ---
 
 ## ER図🔗
+<img width="1412" height="791" alt="index drawio" src="https://github.com/user-attachments/assets/897e1bb2-8a4d-43bf-8661-8494f3e3dc3f" />
 
 
 
