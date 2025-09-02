@@ -1,0 +1,296 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.header {
+    margin-top: 0;
+    width: 100%;
+    background-color: #000000;
+    
+}
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 80px;
+    /* padding: 0 20px; */
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1540px;
+    margin: 0 auto;
+}
+.header__logo {
+    flex: 0 0 auto;
+    margin-left: -45px;
+}
+
+.logo {
+    margin-left: 0;
+    bottom: 27.5%;
+    height: 36px;
+    width: 370px;
+    background: #000000;
+}
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+.header__search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.header__search form {
+    width: 500px;
+        /* Figma指定のwidth */
+        height: 50px;
+        /* Figma指定のheight */
+        display: flex;
+}
+
+.header__search input {
+    height: 100%;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    padding-left: 30px;
+
+
+}
+.header__nav {
+    flex-shrink: 0;
+    margin-left: auto;
+    min-width: 150px;
+}
+.header__nav ul {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.header__nav li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 24px;
+    width: 130px;
+    height: 47px;
+}
+.header__nav li .nav__button {
+    width: 110px;
+    height: 50px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 24px;
+    padding: 0px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    /* transition: background-color 0.3s, color 0.3s; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.header__nav li .nav__button:hover {
+    background-color: #e6e6e6;
+    color: #000000;
+}
+/* 共通の商品カードデザイン */
+.mypage__product-list,
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 290px);
+    padding: 0;
+    gap: 50px;
+    box-sizing: border-box;
+    max-width: calc(290px * 4 + 50px * 3);
+    margin: 0 auto;
+}
+.product-card {
+    text-align: center;
+    width: 290px;
+    background-color: #fff;
+
+   
+}
+
+.product-card__image-wrapper {
+
+    position: relative;
+    width: 100%;
+    max-width: 290px;
+    overflow: visible;
+    
+}
+
+.product-card__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.product-card__name {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    /* 少し小さくする */
+    min-height: 40px;
+    font-weight: 400;
+    /* 行間を少し広く */
+    display: block;
+    /* flex は不要 */
+    color: #000;
+    text-align: left;
+    margin: 0;
+    padding: 4px 0;
+    word-break: break-word;
+}
+.product-card__name a {
+    color: #000;
+    /* リンク文字も黒に */
+    text-decoration: none;
+}
+
+.product-card__sold {
+    background: rgba(255, 0, 0, 0.8);
+    /* 半透明にして見やすく */
+    position: absolute;
+    top: 8px;
+        /* 上からの距離 */
+    left: 8px;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 10;
+}
+.no-products {
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    /* お好みでフォントサイズ調整 */
+    color: #666666;
+    /* お好みで色も変更可能 */
+    font-weight: bold;
+}
+
+
+/* PC向け（1400px〜1540px） */
+@media (min-width: 1400px) and (max-width: 1540px) {
+   /* 一旦っ全部の情報をここに置く共通はcssに移す */
+
+    .header__container {
+        padding: 0 20px;
+    }
+
+    .logo {
+        margin-left: 40px;
+
+    }
+    .header__nav {
+        margin-right: 10px;
+    }
+
+    /* 共通の商品カードデザイン */
+    .mypage__product-list,
+    .product-list {
+        display: grid;
+        grid-template-columns: repeat(4, 290px);
+        padding: 0;
+        gap: 50px;
+        box-sizing: border-box;
+        max-width: calc(290px * 4 + 50px * 3);
+        margin: 0 auto;
+    }
+
+
+}
+
+/* タブレット向け（768〜850px） */
+@media (min-width: 768px) and (max-width: 850px) {v
+        .header {
+            width: 100px;
+        }
+        .header__container {
+                width: 100vw;
+                padding: 8px 10px;
+            }
+        /* ロゴ */
+        .logo {
+            width: 130px;
+            height: auto;
+            margin-left: 48px;
+        }
+        .header__logo {
+            flex-shrink: 0;
+        }
+
+        /* 検索フォーム（中央に可変） */
+        .header__search {
+            flex: 1 1 auto;
+            /* ここがポイント：可変領域 */
+
+        }
+
+        .header__search form {
+            width: 100%;
+            max-width: 85%;
+        }
+
+        .header__search input {
+            padding: 6px 10px;
+            font-size: 14px;
+        }
+
+        .header__nav ul {
+            gap: 8px;
+        }
+
+        .header__nav li a,
+        .header__nav li .nav__button {
+            font-size: 14px;
+            white-space: nowrap;
+            min-width: auto;
+        }
+
+        .header__nav li a {
+            padding: 2px 4px;
+        }
+
+        .header__nav li .nav__button {
+            width: 100px;
+            padding: 1px 6px;
+
+        }
+
+        .product-card__image {
+            height: auto;
+            object-fit: contain;
+            /* はみ出さないように比率維持で縮小 */
+        }
+        .mypage__product-list,
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(2, 290px);
+            gap: 45px;
+            box-sizing: border-box;
+            margin: 0 auto;
+            max-width: calc(290px * 2 + 45px * 1);
+
+        }
+        .product-card {
+            width: 100%;
+            /* 1列表示に合わせて幅100% */
+        }
+}

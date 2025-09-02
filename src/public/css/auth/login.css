@@ -1,0 +1,92 @@
+/* 全体のフォームラッパー */
+.login-form {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* 見出し */
+.login-form__heading {
+    font-size: 36px;
+    margin-bottom: 24px;
+    font-weight: bold;
+}
+
+/* フォーム */
+.login-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* フォームグループ（ラベル＋入力） */
+.login-form__group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* ラベル */
+.login-form__label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* 入力欄 */
+.login-form__input {
+    width: 680px;
+    max-width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #5F5F5F;
+    border-radius: 4px;
+    height: 56.12px;
+}
+
+/* エラーメッセージ */
+.login-form__error-message {
+    color: #FF5555;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* ログインボタン */
+.login-form__btn {
+    margin-top: 20px;
+    width: 680px;
+    max-width: 100%;
+    padding: 5px;
+    font-size: 26px;
+    background-color: #FF5555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 65.25px;
+    font-weight: bold;
+}
+
+.login-form__btn:hover {
+    background-color: #e04b4b;
+}
+.footer {
+    text-align: center;
+
+
+}
+
+.footer__container {
+    padding: 5px auto;
+}
+
+.footer__link {
+
+    font-size: 20px;
+    text-decoration: underline;
+    color: #0073CC;
+    text-decoration: none;
+}
