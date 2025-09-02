@@ -1,0 +1,179 @@
+.alert-success {
+    width: 100%;
+    /* 横幅いっぱいに */
+    padding: 10px 15px;
+    /* 内側余白 */
+    background-color: #d4edda;
+    color: #155724;
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    /* パディングを含めて幅計算 */
+    margin: 0 auto 20px auto;
+}
+.mypage__profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    margin-top: 70px;
+    margin-left: 299px;
+    gap: 40px;
+}
+
+.mypage__profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.mypage__profile-image--default {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mypage__profile-center {
+    width: 400px;
+    /* ←ここを250pxから拡張 */
+    height: auto;
+    /* 高さを自動調整にする */
+    margin: 0;
+}
+.mypage__username {
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 36px;
+    margin: 0;
+    word-break: break-word;
+    /* 長い単語を途中で折り返す */
+    white-space: normal;
+    /* 折り返しを許可 */
+    line-height: 1.2;
+}
+.mypage__profile-right {
+    margin-left: auto;
+    width: 310px;
+    margin-right: 90px;
+}
+.mypage__edit-button {
+    background: #fff;
+    color: #FF5555;
+    padding: 12px 30px;
+    border: 2px solid #FF5555;
+    font-size: 26px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    height: 59px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.mypage__tabs {
+    display: flex;
+    margin-bottom: 10px;
+    margin-left: 129px;
+    gap: 40px;
+   
+}
+
+.mypage__tab {
+    margin-right: 20px;
+    padding: 8px;
+    text-decoration: none;
+    color: #888;
+    width: 155px;
+    height: 40px;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    line-height: 40px;
+    /* ボタンの高さと同じにして中央に見せる */
+    text-align: center;
+    /* 真ん中揃えの方がバランスがいい場合 */
+    white-space: nowrap;
+    /* ← 折り返し防止 */
+    vertical-align: middle;
+}
+
+.mypage__tab.active {
+    color: #FF0000;
+    font-weight: bold;
+    
+}
+
+.mypage__tabs-border {
+    width: 100vw;
+    height: 1px;
+    background-color: #5F5F5F;
+    margin: 0 calc(-1 * (100vw - 100%)/2) 40px;
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+
+    /* プロフィール全体を左寄せに */
+    .mypage__profile {
+        margin: 30px 40px;
+        /* PCで299pxのmargin-leftを小さく */
+        gap: 20px;
+        justify-content: flex-start;
+    }
+
+    /* 画像サイズそのまま */
+    .mypage__profile-image,
+    .mypage__profile-image--default {
+        width: 120px;
+        height: 120px;
+        margin: 0;
+        border-radius: 50%;
+    }
+
+    /* 名前を横並びに（縦にならないようにflexを追加） */
+    .mypage__profile-center {
+        width: auto;
+        /* PCの固定幅400px解除 */
+        display: flex;
+        align-items: center;
+    }
+
+    /* 名前の文字サイズを小さくして横並びに */
+    .mypage__username {
+        font-size: 24px;
+        /* 少し小さく */
+        margin: 0;
+    }
+
+    /* 編集ボタンの幅を広くし文字がはみ出ないよう調整 */
+    .mypage__profile-right {
+        width: auto;
+        /* 固定幅解除 */
+        margin-right: 5px;
+    }
+
+    .mypage__edit-button {
+        width: 200px;
+        /* 幅を広げる */
+        font-size: 20px;
+        /* 文字サイズも少し小さめ */
+        height: 50px;
+        /* ボタン高さを少し縮める */
+        padding: 0 12px;
+        white-space: nowrap;
+        /* 改行防止 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+    }
+}
