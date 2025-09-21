@@ -5,7 +5,8 @@
 ### Dockerビルド手順
 
 1. `git clone` git@github.com:karun119/freemarket.git
-2. `docker-compose up -d --build`
+2. `cd freemarket`
+3. `docker-compose up -d --build`
 
 > ※MySQLは、OSによって起動しない場合があります。  
 > 必要に応じて、ご自身のPC環境に合わせて `docker-compose.yml` ファイルを編集してください。
@@ -21,7 +22,7 @@
 4. `php artisan key:generate`
 5. `php artisan migrate`
 6. `php artisan db:seed`
-
+ブラウザで http://localhost/ にアクセスし、Laravelの初期ページが表示されれば環境構築完了です。
 ---
 
 ### メールテスト環境（MailHog）　📧
