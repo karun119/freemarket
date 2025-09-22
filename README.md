@@ -13,7 +13,7 @@
 
 ---
 
-### Laravel環境構築手順
+### Laravel環境構築手順🔗
 
 1. `docker-compose exec php bash`
 2. `composer install`
@@ -31,7 +31,7 @@
 MailHog を使用することで、開発中のメール送信内容をローカルのWeb画面で確認できます。
 （実際の送信はされません）
 
-### メール送信設定手順
+### メール送信設定手順🔗
 1. `.env` に以下を追記してください
 
       MAIL_MAILER=smtp  
@@ -87,9 +87,8 @@ MailHog を使用することで、開発中のメール送信内容をローカ
 
 ## ER図🔗
 
-![index](<img width="1411" height="851" alt="index" src="https://github.com/user-attachments/assets/62ff4c4c-a480-43cd-8c66-d8a7864041a9" />
-)
 
+![index](https://github.com/user-attachments/assets/da3be915-4652-4c17-8e87-3ae3d0b67b79)
 
 ---
 
