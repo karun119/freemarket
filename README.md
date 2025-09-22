@@ -49,6 +49,29 @@ MailHog を使用することで、開発中のメール送信内容をローカ
 
 ---
 
+## テストユーザー情報🔗
+
+> 本アプリには管理者ユーザーは存在しません。  
+> テストの際は以下の一般ユーザー情報をご利用ください。
+
+- ユーザー1  
+  email: taro@example.com  
+  password: password1  
+
+- ユーザー2  
+  email: hanako@example.com  
+  password: password2  
+
+- ユーザー3  
+  email: jiro@example.com  
+  password: password3  
+
+- ユーザー4  
+  email: misaki@example.com  
+  password: password4  
+
+---
+
 ## 使用技術🔗
 
 - Laravel: 8.83.29 
