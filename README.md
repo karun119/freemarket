@@ -23,7 +23,7 @@
 5. `php artisan migrate`
 6. `php artisan db:seed`
    
->ブラウザで http://localhost/ にアクセスし、Laravelの初期ページが表示されれば環境構築完了です。
+
 ---
 
 ### メールテスト環境（MailHog）　📧
