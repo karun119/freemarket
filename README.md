@@ -17,11 +17,22 @@
 
 1. `docker-compose exec php bash`
 2. `composer install`
-3. `.env.example` から `.env` を作成し、環境変数を変更  
+3. `.env.example` から `.env` を作成 
    `cp .env.example .env`
-4. `php artisan key:generate`
-5. `php artisan migrate`
-6. `php artisan db:seed`
+4. `.env`に以下の環境変数を追加してください
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=mysql
+   DB_PORT=3306
+   DB_DATABASE=laravel_db
+   DB_USERNAME=laravel_user
+   DB_PASSWORD=laravel_pass
+   
+5. `php artisan key:generate`
+6. `php artisan migrate`
+7. `php artisan db:seed`
+8. シンボリックリンク作成
+   `php artisan storage:link`
    
 
 ---
@@ -33,7 +44,7 @@ MailHog を使用することで、開発中のメール送信内容をローカ
 
 ### メール送信設定手順🔗
 1. `.env` に以下を追記してください
-
+      ```env
       MAIL_MAILER=smtp  
       MAIL_HOST=mailhog  
       MAIL_PORT=1025  
@@ -52,23 +63,20 @@ MailHog を使用することで、開発中のメール送信内容をローカ
 ## テストユーザー情報🔗
 
 > 本アプリには管理者ユーザーは存在しません。  
-> テストの際は以下の一般ユーザー情報をご利用ください。
+> ※ 新規出品やマイページの商品未出品状態の確認にはユーザー3をご利用ください。
 
-- ユーザー1  
+
+- ユーザー1  (出品あり）
   email: taro@example.com  
   password: password1  
 
-- ユーザー2  
+- ユーザー2  （出品あり）
   email: hanako@example.com  
   password: password2  
 
-- ユーザー3  
+- ユーザー3  （出品なし・新規出品テスト用)
   email: jiro@example.com  
   password: password3  
-
-- ユーザー4  
-  email: misaki@example.com  
-  password: password4  
 
 ---
 
