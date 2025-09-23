@@ -10,7 +10,15 @@
 
 > ※MySQLは、OSによって起動しない場合があります。  
 > 必要に応じて、ご自身のPC環境に合わせて `docker-compose.yml` ファイルを編集してください。
+M1・M2 Macでのエラー対処法⬇️
 
+`docker-compose.yml` の `mysql` サービスに`platform`を追記してください。
+```yaml
+mysql:
+    platform: linux/x86_64   # ← この行を追加
+    image: mysql:8.0.26
+    environment:
+```
 ---
 
 ### Laravel環境構築手順🔗
@@ -19,7 +27,7 @@
 2. `composer install`
 3. `.env.example` から `.env` を作成 
    `cp .env.example .env`
-4. `.env`に以下の環境変数を追加してください
+4. `.env`に以下の環境変数を追加してください。
    ```env
    DB_CONNECTION=mysql
    DB_HOST=mysql
