@@ -25,8 +25,7 @@ class AddressRequest extends FormRequest
     {
         return [
             'sending_postcode' => ['required', 'regex:/^\d{3}-\d{4}$/'],
-            'sending_address' => ['required', 'max:255'],
-            'sending_building' => ['nullable', 'max:255'],
+            'sending_address' => ['required'],
         ];
     }
     public function messages(): array
@@ -40,8 +39,8 @@ class AddressRequest extends FormRequest
     protected function prepareForValidation()
     {
     if ($this->sending_postcode) {
-        $cleaned = mb_convert_kana($this->sending_postcode, 'n'); // 全角→半角
-        $cleaned = preg_replace('/[^0-9]/', '', $cleaned);   // 数字以外除去
+        $cleaned = mb_convert_kana($this->sending_postcode, 'n');
+        $cleaned = preg_replace('/[^0-9]/', '', $cleaned);
 
         if (preg_match('/^\d{7}$/', $cleaned)) {
             $this->merge([

@@ -7,11 +7,8 @@
 @section('content')
 <div class="exhibition-container">
     <h1 class="exhibition-title">商品の出品</h1>
-
     <form action="{{ route('sell.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-
-        {{-- 商品画像 --}}
         <div class="form-section">
             <label class="form-label">商品画像</label>
             <div class="image-upload-box" id="imagePreview">
@@ -23,12 +20,8 @@
                 <p class="error-text">{{ $message }}</p>
             @enderror
         </div>
-
-        {{-- 商品の詳細 --}}
         <h2 class="section-title">商品の詳細</h2>
         <hr class="section-divider">
-
-        {{-- カテゴリー --}}
         <div class="form-section">
             <label class="form-label">カテゴリー</label>
             <div class="category-list">
@@ -43,8 +36,6 @@
                 <p class="error-text">{{ $message }}</p>
             @enderror
         </div>
-
-        {{-- 商品の状態 --}}
         <div class="form-section">
             <label class="form-label" for="condition_id">商品の状態</label>
             <div class="condition-select-wrapper">
@@ -59,11 +50,8 @@
                 <p class="error-text">{{ $message }}</p>
             @enderror
         </div>
-
-        {{-- 商品名と説明 --}}
         <h2 class="section-title">商品名と説明</h2>
         <hr class="section-divider">
-
         <div class="form-section">
             <label class="form-label" for="item_name">商品名</label>
             <input type="text" id="item_name" name="item_name" class="form-input" value="{{ old('item_name') }}">
@@ -71,17 +59,17 @@
                 <p class="error-text">{{ $message }}</p>
             @enderror
         </div>
-
         <div class="form-section">
             <label class="form-label" for="brand">ブランド名</label>
             <input type="text" id="brand" name="brand" class="form-input" value="{{ old('brand') }}">
         </div>
-
         <div class="form-section">
             <label class="form-label" for="description">商品の説明</label>
             <textarea name="description" id="description" class="form-textarea">{{ old('description') }}</textarea>
+            @error('description')
+                <p class="error-text">{{ $message }}</p>
+            @enderror
         </div>
-
         <div class="form-section">
             <label class="form-label" for="price">販売価格</label>
             <div class="price-wrapper">
@@ -91,8 +79,6 @@
                 <p class="error-text">{{ $message }}</p>
             @enderror
         </div>
-
-        {{-- 出品ボタン --}}
         <div class="form-section">
             <input type="submit" value="出品する" class="submit-btn">
         </div>
@@ -105,10 +91,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const textarea = document.getElementById("description");
     textarea.addEventListener("input", function() {
-        this.style.height = "auto";       // 一度リセット
-        this.style.height = this.scrollHeight + "px"; // 内容に合わせて高さ設定
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
     });
-    // --- 画像プレビュー処理 ---
     const input = document.getElementById("image_path");
     const previewImage = document.getElementById("previewImage");
 
@@ -116,15 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const file = event.target.files[0];
         if (!file) return;
 
-        // 以前の画像だけを消す
         previewImage.innerHTML = "";
 
-        // 画像を作成して表示
     const img = document.createElement("img");
         img.src = URL.createObjectURL(file);
         img.style.maxWidth = "100%";
         img.style.height = "auto";
-        
 
         previewImage.appendChild(img);
     });
@@ -132,20 +114,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     priceInput.addEventListener("input", (e) => {
         let cursorPosition = priceInput.selectionStart;
-
-         // 全角数字・全角英数字を半角に変換
         let value = priceInput.value.replace(/[０-９Ａ-Ｚａ-ｚ]/g, (s) => {
         return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
         });
 
-        // 既存のカンマを削除
         value = value.replace(/,/g, '');
-        // 3桁ごとにカンマを挿入
         value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
         priceInput.value = value;
 
-        // カーソル位置の簡易調整
         priceInput.selectionStart = priceInput.selectionEnd = cursorPosition;
 });
 

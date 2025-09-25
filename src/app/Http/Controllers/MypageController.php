@@ -13,27 +13,25 @@ use Illuminate\Support\Facades\Storage;
 class MypageController extends Controller
 {
     public function index(Request $request)
-{
-    $user = auth()->user();
-    $profile = $user->profile;
+    {
+        $user = auth()->user();
+        $profile = $user->profile;
+        $viewType = $request->query('page', 'sell');
 
-    // クエリパラメータ ?page=sell or ?page=buy を判断
-    $viewType = $request->query('page', 'sell');
+        if ($viewType === 'buy') {
+            $data = ['orders' => $user->orders()->with('product')->get()];
+        } else {
+            $data = ['products' => $user->products()->get()];
+        }
 
-    if ($viewType === 'buy') {
-        $orders = $user->orders()->with('product')->get();
-        return view('mypage', compact('user', 'profile', 'viewType', 'orders'));
-    } else {
-        $products = $user->products()->get();
-        return view('mypage', compact('user', 'profile', 'viewType', 'products'));
+        return view('mypage', array_merge(['user' => $user, 'profile' => $profile, 'viewType' => $viewType], $data));
     }
-}
+
 
     public function edit()
     {
         $user = auth()->user();
 
-        // 初回ログイン時、プロフィールがなければ作成
         if (!$user->profile) {
             $user->profile()->create([
                 'postal_code' => '',
@@ -50,37 +48,27 @@ class MypageController extends Controller
         ]);
     }
 
+
     public function update(ProfileRequest $request)
     {
         $user = auth()->user();
         $profile = $user->profile;
 
-        // 画像アップロード処理
         if ($request->hasFile('profile_image')) {
-            $image = $request->file('profile_image');
-            $path = $image->store('profile_images', 'public');
-
-            // 古い画像があれば削除
             if ($profile->image_path && Storage::disk('public')->exists($profile->image_path)) {
                 Storage::disk('public')->delete($profile->image_path);
             }
 
-            $profile->image_path = $path;
+            $profile->image_path = $request->file('profile_image')->store('profile_images', 'public');
         }
 
-        // ユーザー名更新
-        $user->name = $request->name;
-        $user->save();
+        $user->update(['name' => $request->name]);
+        $profile->update([
+            'postal_code' => $request->postal_code,
+            'address' => $request->address,
+            'building' => $request->building,
+        ]);
 
-        // プロフィール更新
-        $profile->postal_code = $request->postal_code;
-        $profile->address = $request->address;
-        $profile->building = $request->building;
-        $profile->save();
-
-        // 更新後の画面表示
-        return redirect(('/?tab=mylist'))->with('success', 'プロフィールを更新しました。');
-    
+        return redirect('/?tab=mylist')->with('success', 'プロフィールを更新しました。');
     }
-
 }

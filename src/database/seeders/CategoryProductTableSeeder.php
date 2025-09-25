@@ -27,6 +27,5 @@ class CategoryProductTableSeeder extends Seeder
             ['product_id' => 9, 'category_id' => 10],
             ['product_id' => 10, 'category_id' => 6],
         ]);
-
     }
 }

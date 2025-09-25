@@ -1,30 +1,29 @@
-/* タイトル */
 .address-form__heading {
     text-align: center;
     font-size: 36px;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
-
-/* フォーム全体 */
 .address-form {
-    max-width: 600px;
-    /* .profileと同じ */
+    max-width: 680px;
     margin: 0 auto;
-    /* 中央寄せ */
     width: 100%;
     box-sizing: border-box;
+    gap: 60px;
+    display: flex;
+    flex-direction: column;
 }
-
-/* 入力グループ */
 .address__group label {
     display: block;
     font-size: 24px;
-    margin-bottom: 5px;
+    flex-direction: column;
     font-weight: bold;
 }
-
-/* 入力欄 */
+.address__group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
 .address__group input {
     width: 100%;
     padding: 10px;
@@ -33,32 +32,28 @@
     box-sizing: border-box;
     border: 1px solid #5F5F5F;
     border-radius: 4px;
+    margin-bottom: 0;
 }
-
-/* エラーメッセージ */
 .address-error__message {
-    color: #FF5555;
+    color: #ff5555;
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 0;
 }
-
-/* 送信ボタン */
 .address-form__btn {
-    background-color: #FF5555;
+    background-color: #ff5555;
     color: #fff;
     padding: 12px 30px;
     border: none;
     font-size: 26px;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    max-width: 600px;
+    max-width: 680px;
     height: 60px;
     font-weight: bold;
-    margin: 40px auto 0 auto;
+    margin: 50px auto 0 auto;
     display: block;
 }
-
 .address-form__btn:hover {
     background-color: #cc4444;
 }

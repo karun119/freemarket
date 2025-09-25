@@ -11,7 +11,7 @@ class Comment extends Model
     protected $guarded = [
         'id',
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -21,5 +21,4 @@ class Comment extends Model
     {
         return $this->belongsTo(Product::class);
     }
-
 }

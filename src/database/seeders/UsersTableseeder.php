@@ -20,7 +20,7 @@ class UsersTableseeder extends Seeder
             [
                 'name' => '山田 太郎',
                 'email' => 'taro@example.com',
-                'password' => Hash::make('password1'),  // ハッシュ化
+                'password' => Hash::make('password1'),
                 'email_verified_at' => now(),
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
@@ -44,15 +44,7 @@ class UsersTableseeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            [
-                'name' => '田中 美咲',
-                'email' => 'misaki@example.com',
-                'password' => Hash::make('password4'),
-                'email_verified_at' => now(),
-                'remember_token' => Str::random(10),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+
         ]);
     }
 }
