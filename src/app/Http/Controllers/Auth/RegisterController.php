@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Verified;
 
 class RegisterController extends Controller
 {
@@ -15,6 +16,7 @@ class RegisterController extends Controller
     {
         return view('auth.register');
     }
+
 
     public function store(RegisterRequest $request)
     {
@@ -25,12 +27,42 @@ class RegisterController extends Controller
         ]);
 
         Auth::login($user);
-         // メール認証リンクを送信
         $user->sendEmailVerificationNotification();
-
-        // ログインせずにメール確認画面にリダイレクト
         return redirect()->route('verification.notice');
+    }
 
-        
+
+    /**
+     * メール認証処理
+     */
+    public function verifyEmail(Request $request, $id, $hash)
+    {
+        $user = User::findOrFail($id);
+
+        if (! hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
+            abort(403);
+        }
+
+        Auth::login($user);
+
+        if (! $user->hasVerifiedEmail()) {
+            $user->markEmailAsVerified();
+            event(new Verified($user));
+        }
+
+        return redirect('/mypage/profile');
+    }
+
+
+    public function showVerifyNotice()
+    {
+        return view('auth.verify');
+    }
+
+
+    public function resendVerification(Request $request)
+    {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('message', '確認メールを再送しました。');
     }
 }

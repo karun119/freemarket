@@ -17,12 +17,12 @@
             メール認証を完了してください。
         </p>
 
-        <a href="http://localhost:8025" target="_blank" rel="noopener noreferrer" class="verify-button">
+        <a href="http://localhost:8025" target="_blank" rel="noopener noreferrer" class="verify-btn">
             認証はこちらから
         </a>
         <form method="POST" action="{{ route('verification.send') }}" class="verify-form">
             @csrf
-            <button type="submit" class="verify-resend-button">
+            <button type="submit" class="verify-resend-btn">
                 認証メールを再送する
             </button>
         </form>

@@ -10,7 +10,7 @@
 @endphp
 
 <div class="address__edit-form">
-    <h2 class="address-form__heading content__heading">住所変更</h2>
+    <h2 class="address-form__heading">住所の変更</h2>
     <div class="address-form__inner">
         <form class="address-form" action="{{ route('purchase.address.update', ['item' => $item->id]) }}" method="post">
             @csrf
@@ -22,7 +22,6 @@
                     <p class="address-error__message">{{ $message }}</p>
                 @enderror
             </div>
-
             <div class="address__group">
                 <label for="sending_address">住所</label>
                 <input type="text" id="sending_address" name="sending_address" value="{{ old('sending_address') }}">
@@ -30,12 +29,11 @@
                     <p class="address-error__message">{{ $message }}</p>
                 @enderror
             </div>
-
             <div class="address__group">
                 <label for="sending_building">建物名</label>
                 <input type="text" id="sending_building" name="sending_building" value="{{ old('sending_building') }}">
             </div>
-            <input class="address-form__btn btn" type="submit" value="更新する">
+            <input class="address-form__btn" type="submit" value="更新する">
         </form>
     </div>
 </div>
@@ -46,15 +44,12 @@
         postalInput.addEventListener('input', function (e) {
             let value = e.target.value;
 
-            // 全角数字を半角数字に変換
             value = value.replace(/[０-９]/g, function(s) {
                 return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
             });
 
-            // 数字以外を除去し、7桁までに制限
             value = value.replace(/[^\d]/g, '').slice(0, 7);
 
-            // ハイフン付与
             if (value.length >= 4) {
                 e.target.value = value.slice(0, 3) + '-' + value.slice(3);
             } else {

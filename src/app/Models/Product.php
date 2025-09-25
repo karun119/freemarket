@@ -14,7 +14,7 @@ class Product extends Model
 
     public function seller()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function condition()
@@ -52,5 +52,7 @@ class Product extends Model
         }
         return $query;
     }
+
+    
 
 }

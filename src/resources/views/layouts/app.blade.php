@@ -14,11 +14,11 @@
         <div class="header__container">
             <div class="header__logo">
                 @auth
-                <a href="{{ url('/') }}">
+                <a href="{{ url('/') }}" class="header__logo-link">
                     <img src="{{ asset('images/logo.svg') }}" alt="coachtech" class="logo">
                 </a>
                 @else
-                 <a href="{{ url('/?tab=recommend') }}">
+                <a href="{{ url('/?tab=recommend') }}" class="header__logo-link">
             <img src="{{ asset('images/logo.svg') }}" alt="coachtech" class="logo">
         </a>
                 @endauth
@@ -41,7 +41,7 @@
                 <ul>
                     @auth
                         <li>
-                            <a href="{{ route('logout') }}"
+                            <a href="{{ route('logout') }}" class="header__nav-link"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 ログアウト
                             </a>
@@ -50,10 +50,10 @@
                             </form>
                         </li>
                     @else
-                        <li><a href="{{ route('login') }}">ログイン</a></li>
+                        <li><a href="{{ route('login') }}" class="header__nav-link">ログイン</a></li>
                     @endauth
-                    <li><a href="{{ route('mypage.index') }}">マイページ</a></li>
-                    <li><a href="{{ route('sell.create') }}" class="nav__button">出品</a></li>
+                    <li><a href="{{ route('mypage.index') }}" class="header__nav-link">マイページ</a></li>
+                    <li><a href="{{ route('sell.create') }}" class="nav__btn">出品</a></li>
                 </ul>
             </nav>
             @endif

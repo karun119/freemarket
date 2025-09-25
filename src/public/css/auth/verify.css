@@ -1,10 +1,10 @@
 .verify-container {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 80vh;
+    align-items: flex-start;
+    padding-top: 200px;
 }
-
 .verify-box {
     text-align: center;
     max-width: 800px;
@@ -12,7 +12,6 @@
     padding: 20px;
     background-color: #fff;
 }
-
 .verify-message {
     width: 100%;
     line-height: 1.8;
@@ -21,51 +20,55 @@
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-    
-    
 }
-
-.verify-button {
+.verify-btn {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 30px;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     color: #000000;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 700;
     border: 1px solid #000000
 }
-
-.verify-button:hover {
+.verify-btn:hover {
     background-color: #bfbfbf;
 }
-
 .verify-form {
     margin-top: 20px;
 }
-
-.verify-resend-button {
+.verify-resend-btn {
+    margin-top: 30px;
     background-color: transparent;
     border: none;
     color: #3490dc;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
 }
-
-.verify-resend-button:hover {
+.verify-resend-btn:hover {
     color: #2779bd;
 }
-
 .verify-status-message {
-    color: green;
+    color: #155724;
     margin-top: 10px;
     font-size: 14px;
 }
 .verify-error-message {
-    color: #FF5555;
+    color: #ff5555;
     font-weight: bold;
     margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .verify-container {
+        align-items: flex-start;
+        padding-top: 100px;
+        height: auto;
+    }
+    .verify-message {
+        font-size: 20px;
+    }
 }
