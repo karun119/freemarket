@@ -37,6 +37,7 @@
 .address-error__message {
     color: #ff5555;
     font-size: 14px;
+    font-weight: 700;
     margin-top: 0;
 }
 .address-form__btn {

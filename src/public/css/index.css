@@ -2,7 +2,8 @@
     padding: 0 20px;
 }
 .flash-error {
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 14px;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     background-color: #f8d7da;
@@ -13,7 +14,8 @@
     text-align: center;
 }
 .flash-success {
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 14px;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     background-color: #d4edda;

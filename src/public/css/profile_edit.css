@@ -71,8 +71,9 @@
 }
 .profile__error {
     color: #ff5555;
-    font-size: 18px;
+    font-size: 14px;
     margin-top: 5px;
+    font-weight: 700;
 }
 .profile__submit-container {
     text-align: center;

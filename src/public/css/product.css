@@ -253,7 +253,7 @@
     font-size: 20px;
     word-wrap: break-word;
     min-height: 70px;
-    display: block;
+    display: flex;
     align-items: center;
     line-height: 1.6;
     white-space: pre-wrap;
@@ -282,6 +282,7 @@
 .error-message {
     color: #e65b50;
     font-size: 14px;
+    font-weight: 700;
     margin-top: 2px;
     margin-bottom: 20px;
 }

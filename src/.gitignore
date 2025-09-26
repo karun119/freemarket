@@ -1,7 +1,5 @@
 /node_modules
 /public/hot
-/public/storage
-# ⬆最後に消す
 /storage/*.key
 /vendor
 .env

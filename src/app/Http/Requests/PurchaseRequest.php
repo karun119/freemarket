@@ -27,6 +27,7 @@ class PurchaseRequest extends FormRequest
             'payment_method' => ['required'],
             'sending_postcode' => ['required'],
             'sending_address' => ['required'],
+            'sending_building'  => ['nullable', 'max:255'],
         ];
     }
     public function messages()

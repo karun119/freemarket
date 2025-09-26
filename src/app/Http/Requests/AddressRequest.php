@@ -26,6 +26,7 @@ class AddressRequest extends FormRequest
         return [
             'sending_postcode' => ['required', 'regex:/^\d{3}-\d{4}$/'],
             'sending_address' => ['required'],
+            'sending_building' => ['nullable'],
         ];
     }
     public function messages(): array

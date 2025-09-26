@@ -11,9 +11,13 @@
         @csrf
         <div class="profile__image-section">
             <div class="profile__image-circle">
-                <img src="{{ $profile && $profile->image_path ? asset('storage/' . $profile->image_path) : '' }}"
-                    alt="プロフィール画像"
-                    class="profile__image {{ !$profile || !$profile->image_path ? 'profile__image--hidden' : '' }}">
+                @if ($profile && $profile->image_path && \Illuminate\Support\Facades\Storage::exists('public/' . $profile->image_path))
+                    <img src="{{ asset('storage/' . $profile->image_path) }}"
+                        alt="プロフィール画像"
+                        class="profile__image">
+                @else
+                    <div class="profile__image--default"></div>
+                @endif
             </div>
             <label class="profile__upload">
                 画像を選択する
