@@ -44,8 +44,7 @@ services:
             - 8080:80
     mailhog:
         image: mailhog/mailhog
-        container_name: mailhog
         platform: linux/amd64
         ports:
-          - "8025:8025"
-          - "1025:1025"
+            - "8025:8025"
+            - "1025:1025"
