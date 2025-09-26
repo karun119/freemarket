@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Product;
@@ -154,35 +153,34 @@ class PurchaseControllerTest extends TestCase
     }
 
 
-    public function 購入した商品に送付先住所が紐づいて登録される()
+    public function test_購入した商品に送付先住所が紐づいて登録される()
     {
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
         $this->actingAs($user);
 
-        $mock = Mockery::mock('overload:' . StripeSession::class);
+        $mock = \Mockery::mock('overload:' . \Stripe\Checkout\Session::class);
         $mock->shouldReceive('create')->andReturn((object)[
             'url' => '/dummy-stripe-url'
         ]);
 
-        $this->post(route('purchase.address.update', $product->id), [
+        $this->withSession([
             'sending_postcode' => '987-6543',
             'sending_address'  => '東京都新宿区1-1-1',
             'sending_building' => 'テストビル202',
-        ]);
-
-        $this->post(route('purchase.store', $product->id), [
+        ])->post(route('purchase.store', $product->id), [
             'payment_method'   => 'card',
-            'sending_postcode' => session('sending_postcode'),
-            'sending_address'  => session('sending_address'),
-            'sending_building' => session('sending_building'),
+            'sending_postcode' => '987-6543',
+            'sending_address'  => '東京都新宿区1-1-1',
+            'sending_building' => 'テストビル202',
         ])->assertRedirect('/dummy-stripe-url');
 
-        $order = $product->orders()->first();
+        $order = $product->order;
         $this->assertNotNull($order);
         $this->assertEquals('987-6543', $order->sending_postcode);
         $this->assertEquals('東京都新宿区1-1-1', $order->sending_address);
         $this->assertEquals('テストビル202', $order->sending_building);
+
     }
 }

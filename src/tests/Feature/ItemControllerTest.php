@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use App\Models\User;
@@ -257,7 +256,7 @@ class ItemControllerTest extends TestCase
         $response->assertSee(number_format($product->price));
         $response->assertSee('コメントユーザー');
         $response->assertSee('これはテストコメントです。');
-        $response->assertSee('profiles/commenter.png');
+        $response->assertSee('<div class="product__user-icon--default"></div>', false);
 
         $response->assertSeeInOrder([
             '<span class="product__favorite-count">1</span>',

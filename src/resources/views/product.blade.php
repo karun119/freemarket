@@ -63,9 +63,9 @@
                             @php
                                 $profile = $comment->user?->profile;
                             @endphp
-                            @if ($profile && $profile->image_path)
+                            @if ($profile && $profile->image_path && \Illuminate\Support\Facades\Storage::exists('public/' . $profile->image_path))
                                 <div class="product__user-icon-circle">
-                                    <img src="{{ asset('storage/' . $profile->image_path) }}" alt="ユーザーアイコン" class="product__user-icon-image">
+                                    <img src="{{ asset('storage/' . $profile->image_path) }}" alt="プロフィール画像" class="product__user-icon-image">
                                 </div>
                             @else
                                 <div class="product__user-icon--default"></div>

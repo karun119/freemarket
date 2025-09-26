@@ -28,6 +28,8 @@ class ProfileRequest extends FormRequest
             'postal_code' => ['required', 'regex:/^\d{3}-\d{4}$/'],
             'address' => ['required', 'max:255'],
             'profile_image' => ['nullable', 'mimes:jpeg,png'],
+            'building' => ['nullable', 'max:255'],
+
         ];
     }
     public function messages(): array

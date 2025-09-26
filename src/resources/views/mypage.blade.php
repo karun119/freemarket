@@ -13,7 +13,7 @@
     @endif
     <div class="mypage__profile">
         <div class="mypage__profile-image">
-            @if ($profile && $profile->image_path)
+            @if ($profile && $profile->image_path && \Illuminate\Support\Facades\Storage::exists('public/' . $profile->image_path))
                 <img src="{{ asset('storage/' . $profile->image_path) }}" alt="プロフィール画像" class="mypage__profile-image-img">
             @else
                 <div class="mypage__profile-image--default"></div>

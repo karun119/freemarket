@@ -80,7 +80,7 @@
             @if(auth()->check() && auth()->id() !== $product->user_id)
                 <button type="submit" class="purchase-btn">購入する</button>
             @else
-                <p class="notice-text">この商品は出品者本人のため購入できません</p>
+                <p class="error-message">この商品は出品者本人のため購入できません</p>
             @endif
         </form>
     </div>

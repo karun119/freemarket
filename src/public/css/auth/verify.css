@@ -1,9 +1,28 @@
+
 .verify-container {
     display: flex;
     justify-content: center;
     height: 80vh;
     align-items: flex-start;
     padding-top: 200px;
+}
+.verify-status-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.verify-status-message {
+    font-weight: 700;
+    font-size: 14px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    text-align: center;
 }
 .verify-box {
     text-align: center;
@@ -51,16 +70,7 @@
 .verify-resend-btn:hover {
     color: #2779bd;
 }
-.verify-status-message {
-    color: #155724;
-    margin-top: 10px;
-    font-size: 14px;
-}
-.verify-error-message {
-    color: #ff5555;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
+
 
 @media screen and (min-width: 768px) and (max-width: 850px) {
     .verify-container {

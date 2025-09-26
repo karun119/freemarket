@@ -151,9 +151,13 @@
 }
 .error-message {
     color: #d9534f;
-    margin-top: 4px;
+    margin-top: -20px;
+    margin-bottom: 4px;
     display: block;
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.7;
+    text-align: center;
 }
 .purchase__summary {
     width: 440px;
@@ -181,7 +185,6 @@
     vertical-align: middle;
 }
 .summary__label {
-    /* width: 220px; */
     font-size: 20px;
     font-weight: 400;
     color: #000000;
@@ -189,7 +192,6 @@
     line-height: 115px;
 }
 .summary__value {
-    /* width: 220px; */
     font-size: 24px;
     font-weight: 400;
     text-align: center;
@@ -209,13 +211,6 @@
 }
 .purchase-btn:hover {
     background-color: #cc4444;
-}
-.notice-text {
-    color: #d9534f;
-    font-size: 0.875rem;
-    margin-top: 4px;
-    display: block;
-    font-size: 18px;
 }
 
 

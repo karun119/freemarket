@@ -19,9 +19,7 @@ class LoginController extends Controller
         $request->authenticate();
 
         if (! Auth::user()->hasVerifiedEmail()) {
-            return redirect()->route('verification.notice')->withErrors([
-                'email' => 'メールアドレスの確認が完了していません。メールをご確認ください。',
-            ]);
+            return redirect()->route('verification.notice');
         }
 
         $request->session()->regenerate();
