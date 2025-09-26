@@ -10,15 +10,19 @@
 
 > ※MySQLは、OSによって起動しない場合があります。  
 > 必要に応じて、ご自身のPC環境に合わせて `docker-compose.yml` ファイルを編集してください。
-M1・M2 Macでのエラー対処法⬇️
-
-`docker-compose.yml` の `mysql` サービスに`platform`を追記してください。
+> ⚠️ 補足（Macユーザー向け）
+>
+> 本リポジトリでは Mac（M1・M2）での MySQL 起動に対応するため、
+> `docker-compose.yml` に以下を記載済みです。
+> 
 ```yaml
 mysql:
-    platform: linux/x86_64   # ← この行を追加
+    platform: linux/x86_64   # ← この行を追加しています
     image: mysql:8.0.26
     environment:
 ```
+>
+> そのため、`docker-compose.yml` を直接編集せずに `docker-compose up -d --build` で起動可能です。
 ---
 
 ### Laravel環境構築手順🔗
