@@ -12,8 +12,8 @@
         <div class="form-section">
             <label class="form-label">商品画像</label>
             <div class="image-upload-box" id="imagePreview">
-            <input type="file" name="image_path" id="image_path" hidden>
-            <label for="image_path" class="image-upload-btn">画像を選択する</label>
+                <input type="file" name="image_path" id="image_path" hidden>
+                <label for="image_path" class="image-upload-btn">画像を選択する</label>
             <div id="previewImage"></div>
             </div>
             @error('image_path')
@@ -111,11 +111,10 @@ document.addEventListener("DOMContentLoaded", () => {
         previewImage.appendChild(img);
     });
     const priceInput = document.getElementById("price");
-
     priceInput.addEventListener("input", (e) => {
         let cursorPosition = priceInput.selectionStart;
         let value = priceInput.value.replace(/[０-９Ａ-Ｚａ-ｚ]/g, (s) => {
-        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+            return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
         });
 
         value = value.replace(/,/g, '');
@@ -123,8 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         priceInput.value = value;
 
         priceInput.selectionStart = priceInput.selectionEnd = cursorPosition;
-});
-
+    });
 });
 </script>
 @endsection

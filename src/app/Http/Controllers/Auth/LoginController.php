@@ -13,12 +13,14 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-
     public function store(LoginRequest $request)
     {
         $request->authenticate();
 
-        if (! Auth::user()->hasVerifiedEmail()) {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if (! $user->hasVerifiedEmail()) {
             return redirect()->route('verification.notice');
         }
 

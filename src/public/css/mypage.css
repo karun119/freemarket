@@ -75,9 +75,11 @@
 }
 .mypage__tabs {
     display: flex;
+    list-style: none;
+    padding: 0;
     margin-bottom: 10px;
-    margin-left: 129px;
-    gap: 50px;
+    margin-left: 140px;
+    gap: 40px;
 }
 .mypage__tab {
     margin-right: 20px;

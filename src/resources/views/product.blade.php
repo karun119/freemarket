@@ -60,9 +60,7 @@
                 <div class="product__comment">
                     <div class="product__comment-header">
                         <div class="product__user-icon">
-                            @php
-                                $profile = $comment->user?->profile;
-                            @endphp
+                            @php $profile = $comment->user?->profile; @endphp
                             @if ($profile && $profile->image_path && \Illuminate\Support\Facades\Storage::exists('public/' . $profile->image_path))
                                 <div class="product__user-icon-circle">
                                     <img src="{{ asset('storage/' . $profile->image_path) }}" alt="プロフィール画像" class="product__user-icon-image">

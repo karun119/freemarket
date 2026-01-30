@@ -16,16 +16,13 @@ class PurchaseController extends Controller
         $product = Product::findOrFail($item_id);
         $profile = Auth::user()->profile;
         $paymentMethod = old('payment_method', session('payment_method.' . $item_id, ''));
-
         return view('purchase', compact('product', 'profile', 'paymentMethod'));
     }
-
 
     public function store(PurchaseRequest $request, $item_id)
     {
         $validated = $request->validated();
         session(['payment_method.' . $item_id => $request->payment_method]);
-
         $product = Product::findOrFail($item_id);
 
         if (Order::where('product_id', $product->id)->exists()) {
@@ -61,7 +58,6 @@ class PurchaseController extends Controller
         return redirect($session->url);
     }
 
-
     public function editAddress(Product $item, Request $request)
     {
         if ($request->filled('payment_method')) {
@@ -70,7 +66,6 @@ class PurchaseController extends Controller
 
         return view('address_edit', compact('item'));
     }
-
 
     public function updateAddress(AddressRequest $request, Product $item)
     {

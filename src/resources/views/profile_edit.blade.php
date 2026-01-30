@@ -12,9 +12,7 @@
         <div class="profile__image-section">
             <div class="profile__image-circle">
                 @if ($profile && $profile->image_path && \Illuminate\Support\Facades\Storage::exists('public/' . $profile->image_path))
-                    <img src="{{ asset('storage/' . $profile->image_path) }}"
-                        alt="プロフィール画像"
-                        class="profile__image">
+                    <img src="{{ asset('storage/' . $profile->image_path) }}" alt="プロフィール画像" class="profile__image">
                 @else
                     <div class="profile__image--default"></div>
                 @endif
@@ -25,7 +23,7 @@
             </label>
         </div>
         @error('profile_image')
-                <p class="profile__error">{{ $message }}</p>
+            <p class="profile__error">{{ $message }}</p>
         @enderror
         <div class="profile__group">
             <label for="name" class="profile__label">ユーザー名</label>

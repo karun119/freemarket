@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/auth/login.css')}}">
 @endsection
 
-
 @section('content')
 <div class="login-form">
     <h1 class="login-form__heading">ログイン</h1>
