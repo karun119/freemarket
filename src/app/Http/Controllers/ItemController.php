@@ -18,6 +18,7 @@ class ItemController extends Controller
 
         if ($tab === 'mylist') {
             if (Auth::check()) {
+            /** @var \App\Models\User $user */
             $user = Auth::user();
             $query = $user->favoriteProducts()
                     ->where('products.user_id', '!=', $user->id)
@@ -41,10 +42,8 @@ class ItemController extends Controller
             foreach ($products as $product) {
                 session()->forget('payment_method.' . $product->id);
             }
-
         return view('index', compact('products', 'tab'));
         }
-
 
     public function show(Product $item)
     {
@@ -56,10 +55,8 @@ class ItemController extends Controller
             },
             'favoritedByUsers',
         ]);
-
         return view('product', ['product' => $item]);
     }
-
 
     public function store(Request $request, Product $item)
     {
@@ -81,7 +78,6 @@ class ItemController extends Controller
                 'comment' => $validated['comment'],
             ]);
         }
-
         return redirect()->route('item.show', $item->id);
     }
 }

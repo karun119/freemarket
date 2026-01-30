@@ -10,7 +10,7 @@
 @endphp
 
 <div class="address__edit-form">
-    <h2 class="address-form__heading">住所の変更</h2>
+    <h1 class="address-form__heading">住所の変更</h1>
     <div class="address-form__inner">
         <form class="address-form" action="{{ route('purchase.address.update', ['item' => $item->id]) }}" method="post">
             @csrf

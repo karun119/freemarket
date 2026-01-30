@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Condition;
@@ -14,10 +13,8 @@ class SellController extends Controller
     {
         $categories = Category::all();
         $conditions = Condition::all();
-
         return view('exhibition', compact('categories', 'conditions'));
     }
-
 
     public function store(ExhibitionRequest $request)
     {
@@ -27,7 +24,6 @@ class SellController extends Controller
         if ($request->hasFile('image_path')) {
             $imagePath = $request->file('image_path')->store('product_images', 'public');
         }
-
         $product = Product::create([
             'user_id'      => $user->id,
             'condition_id' => $request->condition_id,
@@ -37,11 +33,9 @@ class SellController extends Controller
             'price'        => $request->price,
             'image_path'   => $imagePath,
         ]);
-
         if ($request->categories) {
             $product->categories()->attach($request->categories);
         }
-
         return redirect()->route('items.index')->with('success', '商品を出品しました');
     }
 }

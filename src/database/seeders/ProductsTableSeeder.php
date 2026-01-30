@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -15,7 +14,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('products')->insert([
+        DB::table('products')->insert([
             [
                 'user_id' => 1,
                 'condition_id' => 1,

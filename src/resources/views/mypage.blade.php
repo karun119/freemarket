@@ -14,13 +14,13 @@
     <div class="mypage__profile">
         <div class="mypage__profile-image">
             @if ($profile && $profile->image_path && \Illuminate\Support\Facades\Storage::exists('public/' . $profile->image_path))
-                <img src="{{ asset('storage/' . $profile->image_path) }}" alt="プロフィール画像" class="mypage__profile-image-img">
+            <img src="{{ asset('storage/' . $profile->image_path) }}" alt="プロフィール画像" class="mypage__profile-image-img">
             @else
-                <div class="mypage__profile-image--default"></div>
+            <div class="mypage__profile-image--default"></div>
             @endif
         </div>
         <div class="mypage__profile-info">
-            <h2 class="mypage__username">{{ $user->name }}</h2>
+            <p class="mypage__username">{{ $user->name }}</p>
         </div>
         <div class="mypage__profile-actions">
             <form action="{{ route('profile.edit') }}" method="get">
@@ -28,14 +28,18 @@
             </form>
         </div>
     </div>
-    <div class="mypage__tabs">
-        <a href="{{ route('mypage.index', ['page' => 'sell']) }}" class="mypage__tab {{ $viewType === 'sell' ? 'active' : '' }}">
-            出品した商品
-        </a>
-        <a href="{{ route('mypage.index', ['page' => 'buy']) }}" class="mypage__tab {{ $viewType === 'buy' ? 'active' : '' }}">
-            購入した商品
-        </a>
-    </div>
+    <ul class="mypage__tabs">
+        <li>
+            <a href="{{ route('mypage.index', ['page' => 'sell']) }}" class="mypage__tab {{ $viewType === 'sell' ? 'active' : '' }}">
+                出品した商品
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('mypage.index', ['page' => 'buy']) }}" class="mypage__tab {{ $viewType === 'buy' ? 'active' : '' }}">
+                購入した商品
+            </a>
+        </li>
+    </ul>
     <div class="mypage__tabs-border"></div>
     @if ($viewType === 'buy')
     <div class="product-list">
@@ -46,28 +50,28 @@
                     <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->item_name }}" class="product-card__image">
                 </div>
                 <div class="product-card__name">
-                    {{ $product->item_name }}
+                {{ $product->item_name }}
                 </div>
             </div>
         @empty
         <p class="no-products">商品がありません。</p>
         @endforelse
     </div>
-@else
+    @else
     <div class="mypage__product-list">
         @forelse ($products as $product)
-            <div class="product-card">
-                <div class="product-card__image-wrapper">
-                    <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->item_name }}" class="product-card__image">
-                </div>
-                <div class="product-card__name">
-                    {{ $product->item_name }}
-                </div>
+        <div class="product-card">
+            <div class="product-card__image-wrapper">
+                <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->item_name }}" class="product-card__image">
             </div>
+            <div class="product-card__name">
+                {{ $product->item_name }}
+            </div>
+        </div>
         @empty
         <p class="no-products">商品がありません。</p>
         @endforelse
     </div>
-@endif
+    @endif
 </div>
 @endsection
