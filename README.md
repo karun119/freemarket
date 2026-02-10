@@ -115,6 +115,71 @@ orders テーブルに購入情報を保存する仕様としています。
 
 
 ---
+## PHPUnitを利用したテスト環境の手順🔗
+- 本アプリでは、テスト実行時に `.env.testing` を使用します。
+
+
+1. MySQLコンテナに入る
+```bash
+docker-compose exec mysql bash
+```
+2. MySQLにログイン
+```bash  
+mysql -u root -p
+```
+>パスワードは「root」と入力
+3. テスト用データベースを作成
+```bash
+create database demo_test;
+```
+4. 作成できたか確認する
+```bash
+SHOW DATABASES;
+```
+ >実行すると、MySQLにあるデータベースの一覧が表示されます。
+ >その中に demo_test があれば作成成功です。
+
+5.コンテナから退出
+```bash
+exit
+```
+6.もう一度
+```bash
+exit
+```
+7.PHPコンテナに入ります
+
+```bash
+docker-compose exec php bash
+```
+
+### テスト環境用のマイグレーションを実行
+
+```bash
+php artisan migrate:fresh --env=testing
+```
+
+>⚠️migrate:fresh を実行すると、テスト用データベース内のデータが すべて削除されます。ブラウザで
+ログイン確認などを行う場合は、初期データが必要なため 以下のseed をつけて実行してください。
+>
+```bash
+php artisan migrate:fresh --env=testing --seed
+```
+
+### テストを実行
+
+Laravel コマンドで実行する場合：
+
+```bash
+php artisan test
+```
+
+
+### 補足
+
+- テスト設定は `phpunit.xml` に記述されています。    
+
+---
 
 ## 使用技術🔗
 
