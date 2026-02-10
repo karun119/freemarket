@@ -91,6 +91,30 @@ MailHog を使用することで、開発中のメール送信内容をローカ
   password: password3  
 
 ---
+## Stripe（テスト環境）
+
+> 本アプリでは、決済機能に Stripe（テスト環境）のみを使用しています。
+
+> 購入ボタン押下後、Stripe 側の決済画面に遷移します。  
+支払い方法としてコンビニ支払いを選択した場合は、Stripe のテスト用レシート画面に遷移します。
+
+### 環境変数の設定
+
+Stripe の API キーは、以下のように設定してください。
+
+```env
+STRIPE_PUBLIC_KEY="パブリックキー"
+STRIPE_SECRET_KEY="シークレットキー"
+```
+Stripe 公式ドキュメント
+https://docs.stripe.com/payments/checkout?locale=ja-JP
+
+- ※ 本アプリはテスト用実装のため、
+Stripe の決済完了可否に関わらず、購入ボタン押下時点で
+orders テーブルに購入情報を保存する仕様としています。
+
+
+---
 
 ## 使用技術🔗
 
