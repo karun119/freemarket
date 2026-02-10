@@ -111,7 +111,101 @@ MailHog を使用することで、開発中のメール送信内容をローカ
 ![index](https://github.com/user-attachments/assets/da3be915-4652-4c17-8e87-3ae3d0b67b79)
 
 ---
+## テーブル仕様書
+### usersテーブル
+| カラム名              | 型               | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
+| ----------------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id                | unsigned bigint | ○           |            | ○        |             |
+| name              | varchar(255)    |             |            | ○        |             |
+| email             | varchar(255)    |             | ○          | ○        |             |
+| password          | varchar(255)    |             |            | ○        |             |
+| email_verified_at | timestamp       |             |            |          |             |
+| remember_token    | varchar(100)    |             |            |          |             |
+| created_at        | timestamp       |             |            |          |             |
+| updated_at        | timestamp       |             |            |          |             |
 
+### profilesテーブル
+| カラム名        | 型               | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
+| ----------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id          | unsigned bigint | ○           |            | ○        |             |
+| user_id     | unsigned bigint |             |            | ○        | users(id)   |
+| image_path  | varchar(255)    |             |            |          |             |
+| postal_code | varchar(255)    |             |            | ○        |             |
+| address     | varchar(255)    |             |            | ○        |             |
+| building    | varchar(255)    |             |            |          |             |
+| created_at  | timestamp       |             |            |          |             |
+| updated_at  | timestamp       |             |            |          |             |
+
+### categoriesテーブル
+| カラム名       | 型               | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
+| ---------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id         | unsigned bigint | ○           |            | ○        |             |
+| category   | varchar(255)    |             |            | ○        |             |
+| created_at | timestamp       |             |            |          |             |
+| updated_at | timestamp       |             |            |          |             |
+
+### conditionsテーブル
+| カラム名       | 型               | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY |
+| ---------- | --------------- | ----------- | ---------- | -------- | ----------- |
+| id         | unsigned bigint | ○           |            | ○        |             |
+| name       | varchar(255)    |             |            | ○        |             |
+| created_at | timestamp       |             |            |          |             |
+| updated_at | timestamp       |             |            |          |             |
+
+### productsテーブル
+| カラム名         | 型                | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY    |
+| ------------ | ---------------- | ----------- | ---------- | -------- | -------------- |
+| id           | unsigned bigint  | ○           |            | ○        |                |
+| user_id      | unsigned bigint  |             |            | ○        | users(id)      |
+| condition_id | unsigned bigint  |             |            | ○        | conditions(id) |
+| item_name    | varchar(255)     |             |            | ○        |                |
+| image_path   | varchar(255)     |             |            | ○        |                |
+| brand        | varchar(255)     |             |            |          |                |
+| description  | varchar(255)     |             |            | ○        |                |
+| price        | unsigned integer |             |            | ○        |                |
+| created_at   | timestamp        |             |            |          |                |
+| updated_at   | timestamp        |             |            |          |                |
+
+### category_productテーブル（中間テーブル）
+| カラム名        | 型               | PRIMARY KEY | UNIQUE KEY      | NOT NULL | FOREIGN KEY    |
+| ----------- | --------------- | ----------- | --------------- | -------- | -------------- |
+| category_id | unsigned bigint |             | product_idとの複合  | ○        | categories(id) |
+| product_id  | unsigned bigint |             | category_idとの複合 | ○        | products(id)   |
+| created_at  | timestamp       |             |                 |          |                |
+| updated_at  | timestamp       |             |                 |          |                |
+
+### ordersテーブル
+| カラム名             | 型               | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY  |
+| ---------------- | --------------- | ----------- | ---------- | -------- | ------------ |
+| id               | unsigned bigint | ○           |            | ○        |              |
+| user_id          | unsigned bigint |             |            | ○        | users(id)    |
+| product_id       | unsigned bigint |             |            | ○        | products(id) |
+| sending_postcode | varchar(255)    |             |            | ○        |              |
+| sending_address  | varchar(255)    |             |            | ○        |              |
+| sending_building | varchar(255)    |             |            |          |              |
+| payment_method   | varchar(255)    |             |            | ○        |              |
+| created_at       | timestamp       |             |            |          |              |
+| updated_at       | timestamp       |             |            |          |              |
+
+### favoritesテーブル（中間テーブル）
+| カラム名       | 型               | PRIMARY KEY | UNIQUE KEY     | NOT NULL | FOREIGN KEY  |
+| ---------- | --------------- | ----------- | -------------- | -------- | ------------ |
+| user_id    | unsigned bigint |             | product_idとの複合 | ○        | users(id)    |
+| product_id | unsigned bigint |             | user_idとの複合    | ○        | products(id) |
+| created_at | timestamp       |             |                |          |              |
+| updated_at | timestamp       |             |                |          |              |
+
+### commentsテーブル
+| カラム名       | 型               | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY  |
+| ---------- | --------------- | ----------- | ---------- | -------- | ------------ |
+| id         | unsigned bigint | ○           |            | ○        |              |
+| user_id    | unsigned bigint |             |            | ○        | users(id)    |
+| product_id | unsigned bigint |             |            | ○        | products(id) |
+| comment    | varchar(255)    |             |            | ○        |              |
+| created_at | timestamp       |             |            |          |              |
+| updated_at | timestamp       |             |            |          |              |
+
+---
 ## URL🔗
 
 - [開発環境 : http://localhost/](http://localhost/)
