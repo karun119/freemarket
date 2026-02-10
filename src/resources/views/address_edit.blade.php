@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-@php
+<!-- @php
     $paymentMethod = session('payment_method', '');
-@endphp
+@endphp -->
 
 <div class="address__edit-form">
     <h1 class="address-form__heading">住所の変更</h1>
