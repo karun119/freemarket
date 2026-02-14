@@ -196,7 +196,7 @@ php artisan test
 
 ## ER図🔗
 
-![index](https://github.com/user-attachments/assets/da3be915-4652-4c17-8e87-3ae3d0b67b79)
+![ER図](https://github.com/user-attachments/assets/fde3acfa-2070-4034-9945-d9fd3ad0e2a6)
 
 
 ---
