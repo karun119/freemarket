@@ -295,6 +295,13 @@ php artisan test
 | updated_at | timestamp       |             |            |          |              |
 
 ---
+## バリデーション一覧
+### 補足
+
+・メッセージ編集時も投稿時と同様のバリデーション
+（本文必須・400文字以内）を適用しています。
+
+---
 ## URL🔗
 
 - [開発環境 : http://localhost/](http://localhost/)
