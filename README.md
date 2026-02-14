@@ -313,10 +313,14 @@ transactionsテーブル補足：
 | id             | unsigned bigint | ⚪︎ |        | ⚪︎       |                  |
 | transaction_id | unsigned bigint |    |        | ⚪︎       | transactions(id) |
 | user_id        | unsigned bigint |    |        | ⚪︎       | users(id)        |
-| content        | text            |    |        |          |                  |
+| content        | text            |    |        | ⚪︎       |                  |
 | image_path     | varchar(255)    |    |        |          |                  |
+| read_at        | timestamp       |    |        |          |                  |
 | created_at     | timestamp       |    |        |          |                  |
 | updated_at     | timestamp       |    |        |          |                  |
+
+messagesテーブル補足：
+- read_atカラムは　NULL=未読、日時あり=既読
 
 ### ratingsテーブル（評価）
 | カラム名           | 型                | PK | UNIQUE | NOT NULL | FK               |
