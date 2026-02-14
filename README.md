@@ -294,6 +294,41 @@ php artisan test
 | created_at | timestamp       |             |            |          |              |
 | updated_at | timestamp       |             |            |          |              |
 
+### transactionsテーブル（取引管理）
+| カラム名       | 型               | PK | UNIQUE | NOT NULL | FK         |
+| ---------- | --------------- | -- | ------ | -------- | ---------- |
+| id         | unsigned bigint | ⚪︎ |        | ⚪︎       |            |
+| order_id   | unsigned bigint |    |        | ⚪︎       | orders(id) |
+| seller_id  | unsigned bigint |    |        | ⚪︎       | users(id)  |
+| status     | varchar(50)     |    |        | ⚪︎       |            |
+| created_at | timestamp       |    |        |          |            |
+| updated_at | timestamp       |    |        |          |            |
+
+transactionsテーブル補足：
+- statusは「trading（取引中）」「completed（取引完了）」のいずれかを格納する。
+
+### messagesテーブル（取引チャット）
+| カラム名           | 型               | PK | UNIQUE | NOT NULL | FK               |
+| -------------- | --------------- | -- | ------ | -------- | ---------------- |
+| id             | unsigned bigint | ⚪︎ |        | ⚪︎       |                  |
+| transaction_id | unsigned bigint |    |        | ⚪︎       | transactions(id) |
+| user_id        | unsigned bigint |    |        | ⚪︎       | users(id)        |
+| body           | text            |    |        |          |                  |
+| image_path     | varchar(255)    |    |        |          |                  |
+| created_at     | timestamp       |    |        |          |                  |
+| updated_at     | timestamp       |    |        |          |                  |
+
+### ratingsテーブル（評価）
+| カラム名           | 型                | PK | UNIQUE | NOT NULL | FK               |
+| -------------- | ---------------- | -- | ------ | -------- | ---------------- |
+| id             | unsigned bigint  | ⚪︎ |        | ⚪︎       |                  |
+| transaction_id | unsigned bigint  |    |        | ⚪︎       | transactions(id) |
+| rater_id       | unsigned bigint  |    |        | ⚪︎       | users(id)        |
+| rated_user_id  | unsigned bigint  |    |        | ⚪︎       | users(id)        |
+| score          | unsigned integer |    |        | ⚪︎       |                  |
+| created_at     | timestamp        |    |        |          |                  |
+| updated_at     | timestamp        |    |        |          |                  |
+
 ---
 ## バリデーション一覧
 ### 補足
