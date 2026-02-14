@@ -313,7 +313,7 @@ transactionsテーブル補足：
 | id             | unsigned bigint | ⚪︎ |        | ⚪︎       |                  |
 | transaction_id | unsigned bigint |    |        | ⚪︎       | transactions(id) |
 | user_id        | unsigned bigint |    |        | ⚪︎       | users(id)        |
-| body           | text            |    |        |          |                  |
+| content        | text            |    |        |          |                  |
 | image_path     | varchar(255)    |    |        |          |                  |
 | created_at     | timestamp       |    |        |          |                  |
 | updated_at     | timestamp       |    |        |          |                  |
