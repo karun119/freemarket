@@ -196,8 +196,8 @@ php artisan test
 
 ## ER図🔗
 
-
 ![index](https://github.com/user-attachments/assets/da3be915-4652-4c17-8e87-3ae3d0b67b79)
+
 
 ---
 ## テーブル仕様書
