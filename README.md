@@ -322,12 +322,14 @@ transactionsテーブル補足：
 | カラム名           | 型                | PK | UNIQUE | NOT NULL | FK               |
 | -------------- | ---------------- | -- | ------ | -------- | ---------------- |
 | id             | unsigned bigint  | ⚪︎ |        | ⚪︎       |                  |
-| transaction_id | unsigned bigint  |    |        | ⚪︎       | transactions(id) |
-| rater_id       | unsigned bigint  |    |        | ⚪︎       | users(id)        |
+| transaction_id | unsigned bigint  |    | ⚪︎（複合） | ⚪︎       | transactions(id) |
+| rater_id       | unsigned bigint  |    | ⚪︎（複合） | ⚪︎       | users(id)        |
 | rated_user_id  | unsigned bigint  |    |        | ⚪︎       | users(id)        |
 | score          | unsigned integer |    |        | ⚪︎       |                  |
-| created_at     | timestamp        |    |        |          |                  |
-| updated_at     | timestamp        |    |        |          |                  |
+
+ratingsテーブル補足：
+- 1取引につき、1ユーザーは1回のみ評価できる仕様とするため
+(transaction_id, rater_id) にUNIQUE制約を設定
 
 ---
 ## バリデーション一覧
