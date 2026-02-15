@@ -300,7 +300,7 @@ php artisan test
 | id         | unsigned bigint | ⚪︎ |        | ⚪︎       |            |
 | order_id   | unsigned bigint |    |        | ⚪︎       | orders(id) |
 | seller_id  | unsigned bigint |    |        | ⚪︎       | users(id)  |
-| status     | varchar(50)     |    |        | ⚪︎       |            |
+| status     | enum     |    |        | ⚪︎       |            |
 | created_at | timestamp       |    |        |          |            |
 | updated_at | timestamp       |    |        |          |            |
 
