@@ -316,6 +316,7 @@ transactionsテーブル補足：
 | content        | text            |    |        | ⚪︎       |                  |
 | image_path     | varchar(255)    |    |        |          |                  |
 | read_at        | timestamp       |    |        |          |                  |
+| edited_at      | timestamp       |    |        |          |                  |
 | created_at     | timestamp       |    |        |          |                  |
 | updated_at     | timestamp       |    |        |          |                  |
 
