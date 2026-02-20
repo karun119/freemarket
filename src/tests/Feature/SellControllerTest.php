@@ -55,7 +55,9 @@ class SellControllerTest extends TestCase
 
         $product = Product::first();
         $this->assertTrue($product->categories->contains($category->id));
-
-        Storage::disk('public')->assertExists($product->image_path);
+       /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+        /** @phpstan-ignore-next-line */
+        $disk->assertExists($product->image_path);
     }
 }

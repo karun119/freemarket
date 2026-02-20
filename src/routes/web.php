@@ -7,7 +7,9 @@ use App\Http\Controllers\SellController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RatingController;
 
 
 
@@ -61,4 +63,20 @@ Route::middleware(['auth','verified'])->group(function () {
 
     Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('profile.edit');
     Route::post('/mypage/profile', [MypageController::class, 'update'])->name('profile.update');
+
+    Route::get('/transaction/{transaction_id}', [TransactionController::class, 'show'])
+    ->name('transaction.show');
+
+    Route::post('/transaction/{transaction_id}/message', [MessageController::class, 'store'])
+        ->name('message.store');
+    Route::patch('/messages/{message_id}', [MessageController::class, 'update'])
+        ->name('message.update');
+    Route::delete('/messages/{message_id}', [MessageController::class, 'destroy'])
+        ->name('message.destroy');
+
+    Route::post('/transaction/{transaction_id}/complete', [TransactionController::class, 'complete'])
+        ->name('transaction.complete');
+
+    Route::post('/transaction/{transaction_id}/rating', [RatingController::class, 'store'])
+        ->name('transaction.rating.store');
 });

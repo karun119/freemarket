@@ -27,7 +27,8 @@
                 !request()->is('login') &&
                 !request()->is('register') &&
                 !request()->is('verify-check') &&
-                !request()->is('verification*')
+                !request()->is('verification*') &&
+                !request()->is('transaction*')
                 )
             <div class="header__search">
                 <form action="{{ url('/') }}" method="GET">

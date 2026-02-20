@@ -71,7 +71,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 2,
                 'condition_id' => 2,
                 'item_name' => 'マイク',
                 'price' => 8000,
@@ -82,7 +82,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 2,
                 'condition_id' => 3,
                 'item_name' => 'ショルダーバッグ',
                 'price' => 3500,
@@ -93,7 +93,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 2,
                 'condition_id' => 4,
                 'item_name' => 'タンブラー',
                 'price' => 500,

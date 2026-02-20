@@ -6,14 +6,15 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\Order;
 use Stripe\Checkout\Session as StripeSession;
 use Mockery;
+
 
 
 class PurchaseControllerTest extends TestCase
 {
     use RefreshDatabase;
+
 
     public function test_購入ボタンを押下すると購入が完了する()
     {

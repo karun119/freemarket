@@ -1,13 +1,10 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/address_edit.css')}}">
+<link rel="stylesheet" href="{{ asset('css/address_edit.css') }}">
 @endsection
 
 @section('content')
-<!-- @php
-    $paymentMethod = session('payment_method', '');
-@endphp -->
 
 <div class="address__edit-form">
     <h1 class="address-form__heading">住所の変更</h1>

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddressRequest;
 use App\Http\Requests\PurchaseRequest;
+
 
 class PurchaseController extends Controller
 {
@@ -28,13 +30,17 @@ class PurchaseController extends Controller
         if (Order::where('product_id', $product->id)->exists()) {
             return redirect()->route('items.index')->with('error', 'この商品はすでに購入済みです。');;
         }
-
         $order = Order::create(array_merge($validated, [
             'user_id'    => Auth::id(),
             'product_id' => $product->id,
         ]));
 
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Transaction::create([
+            'order_id'  => $order->id,
+            'seller_id' => $product->user_id,
+            'status'    => 'trading',
+        ]);
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
         $paymentType = $request->payment_method === 'card' ? ['card'] : ['konbini'];
 
@@ -54,7 +60,6 @@ class PurchaseController extends Controller
             'success_url' => route('items.index') . '?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url'  => route('items.index'),
         ]);
-
         return redirect($session->url);
     }
 
