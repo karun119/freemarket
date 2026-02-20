@@ -206,7 +206,7 @@ php artisan test
 ---
 
 ## バリデーション一覧
-
+![バリデーション画面](docs/validation_screens.png)
 ### メッセージ編集
 - 今回はバリデーション未設定（機能要件に記載がなかったため）  
   → 空欄送信でもDBは更新されず、既存メッセージは維持されます
@@ -372,7 +372,14 @@ ratingsテーブル補足：
 (transaction_id, rater_id) にUNIQUE制約を設定
 
 ---
+## 画面仕様書
+### 仕様書
+![Specification Screen](docs/spec_screen.png)
 
+### 詳細画面
+![Detail Screen](docs/view_detail_screen.png)
+
+---
 ## URL🔗
 
 - [開発環境 : http://localhost/](http://localhost/)
