@@ -215,58 +215,48 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-
     const modal = document.getElementById('ratingModal');
-    if (!modal) return;
-    const completeBtn = document.querySelector('.transaction-complete-btn');
-    const stars = modal.querySelectorAll('.star');
-    const ratingForm = document.getElementById('rating-form');
-    const scoreInput = document.getElementById('score-input');
-    const autoOpen = modal.dataset.autoOpen === '1';
-    const modalContent = modal.querySelector('.rating-modal-content');
+    if (modal) {
+        const completeBtn = document.querySelector('.transaction-complete-btn');
+        const stars = modal.querySelectorAll('.star');
+        const ratingForm = document.getElementById('rating-form');
+        const scoreInput = document.getElementById('score-input');
+        const autoOpen = modal.dataset.autoOpen === '1';
+        const modalContent = modal.querySelector('.rating-modal-content');
 
-    modal.addEventListener('click', function(e) {
-        if (!modalContent.contains(e.target)) {
-            modal.style.display = 'none';
+        if (autoOpen) modal.style.display = 'flex';
+        if (completeBtn) {
+            completeBtn.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
         }
-    });
 
-    if (autoOpen) modal.style.display = 'flex';
-    if (completeBtn) {
-        completeBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-        });
-    }
-    stars.forEach((star, index) => {
-        star.addEventListener('click', function () {
-
-            stars.forEach(s => s.classList.remove('active'));
-
-            for (let i = 0; i <= index; i++) {
-                stars[i].classList.add('active');
+        modal.addEventListener('click', function(e) {
+            if (!modalContent.contains(e.target)) {
+                modal.style.display = 'none';
             }
-
-            scoreInput.value = index + 1;
         });
-    });
 
-    const errorMsg = modal.querySelector('.rating-error');
-    if (ratingForm) {
-        ratingForm.addEventListener('submit', (e) => {
-            if (!scoreInput.value) {
-                e.preventDefault();
-                if (errorMsg) {
-                    errorMsg.textContent = '評価の数を選択してください';
-                    errorMsg.style.display = 'block';
+        stars.forEach((star, index) => {
+            star.addEventListener('click', function () {
+                stars.forEach(s => s.classList.remove('active'));
+                for (let i = 0; i <= index; i++) stars[i].classList.add('active');
+                scoreInput.value = index + 1;
+            });
+        });
+        if (ratingForm) {
+            ratingForm.addEventListener('submit', (e) => {
+                if (!scoreInput.value) {
+                    e.preventDefault();
+                    const errorMsg = modal.querySelector('.rating-error');
+                    if (errorMsg) {
+                        errorMsg.textContent = '評価の数を選択してください';
+                        errorMsg.style.display = 'block';
+                    }
                 }
-            }
-        });
+            });
+        }
     }
-    stars.forEach((star) => {
-        star.addEventListener('click', () => {
-            if (errorMsg) errorMsg.style.display = 'none';
-        });
-    });
 
     const resizeTextarea = (el, minHeight = null) => {
         el.style.height = 'auto';
@@ -274,8 +264,9 @@ document.addEventListener('DOMContentLoaded', function () {
         el.style.height = el.scrollHeight + 'px';
     };
 
-    const inputArea = document.querySelector('.transaction-input');
-    if (inputArea) {
+    const initInputTextarea = () => {
+        const inputArea = document.querySelector('.transaction-input');
+        if (!inputArea) return;
         const storageKey = "message_draft_{{ $transaction->id }}";
         const saved = localStorage.getItem(storageKey);
         if (saved) inputArea.value = saved;
@@ -293,54 +284,61 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.removeItem(storageKey);
             });
         }
-    }
+    };
+    initInputTextarea();
 
-    const editTextareas = document.querySelectorAll('.message-text-edit');
-    editTextareas.forEach(textarea => {
-        textarea.addEventListener('input', function () {
-            resizeTextarea(this);
-        });
-    });
-
-    const errorWrapper = document.querySelector('.error-wrapper');
-    if (errorWrapper) errorWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-    document.querySelectorAll('.edit-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            const wrapper = this.closest('.message-content-wrapper');
-            const view = wrapper.querySelector('.view-mode');
-            const form = wrapper.querySelector('.edit-form');
-            const textarea = form.querySelector('.message-text-edit');
-            const saveBtn = wrapper.querySelector('.save-btn');
-            const cancelBtn = wrapper.querySelector('.cancel-btn');
-
-            view.style.display = 'none';
-            form.style.display = 'block';
-            requestAnimationFrame(() => {
-                textarea.style.height = 'auto';
-                textarea.style.height = textarea.scrollHeight + 'px';
+    const initEditTextareas = () => {
+        const editTextareas = document.querySelectorAll('.message-text-edit');
+        editTextareas.forEach(textarea => {
+            resizeTextarea(textarea);
+            textarea.addEventListener('input', function () {
+                resizeTextarea(this);
             });
-            this.style.display = 'none';
-            saveBtn.style.display = 'inline-block';
-            cancelBtn.style.display = 'inline-block';
         });
-    });
-    document.querySelectorAll('.cancel-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            const wrapper = this.closest('.message-content-wrapper');
-            const view = wrapper.querySelector('.view-mode');
-            const form = wrapper.querySelector('.edit-form');
-            const editBtn = wrapper.querySelector('.edit-btn');
-            const saveBtn = wrapper.querySelector('.save-btn');
+    };
+    initEditTextareas();
 
-            form.style.display = 'none';
-            view.style.display = 'block';
+    const initEditButtons = () => {
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const wrapper = this.closest('.message-content-wrapper');
+                const view = wrapper.querySelector('.view-mode');
+                const form = wrapper.querySelector('.edit-form');
+                const textarea = form.querySelector('.message-text-edit');
+                const saveBtn = wrapper.querySelector('.save-btn');
+                const cancelBtn = wrapper.querySelector('.cancel-btn');
 
-            editBtn.style.display = 'inline-block';
-            saveBtn.style.display = 'none';
-            this.style.display = 'none';
+                view.style.display = 'none';
+                form.style.display = 'block';
+
+                requestAnimationFrame(() => {
+                    resizeTextarea(textarea);
+                });
+
+                this.style.display = 'none';
+                saveBtn.style.display = 'inline-block';
+                cancelBtn.style.display = 'inline-block';
+            });
         });
-    });
+
+        document.querySelectorAll('.cancel-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const wrapper = this.closest('.message-content-wrapper');
+                const view = wrapper.querySelector('.view-mode');
+                const form = wrapper.querySelector('.edit-form');
+                const editBtn = wrapper.querySelector('.edit-btn');
+                const saveBtn = wrapper.querySelector('.save-btn');
+
+                form.style.display = 'none';
+                view.style.display = 'block';
+
+                editBtn.style.display = 'inline-block';
+                saveBtn.style.display = 'none';
+                this.style.display = 'none';
+            });
+        });
+    };
+    initEditButtons();
 
     const scrollToBottom = () => {
         window.scrollTo(0, document.body.scrollHeight);
