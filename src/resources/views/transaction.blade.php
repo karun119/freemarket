@@ -14,18 +14,16 @@
     <div class="transaction-sidebar">
         <h2 class="transaction-sidebar-title">その他の取引</h2>
         <ul class="transaction-sidebar-list">
-            @if(!$isBuyer)
-                @foreach($sidebarTransactions as $sidebarTransaction)
-                    @php $product = $sidebarTransaction->order?->product; @endphp
-                    @if($product)
-                        <li class="transaction-sidebar-item">
-                            <a href="{{ route('transaction.show', ['transaction_id' => $sidebarTransaction->id]) }}" class="sidebar-product-name">
-                                {{ $product->item_name }}
-                            </a>
-                        </li>
-                    @endif
-                @endforeach
-            @endif
+            @foreach($sidebarTransactions as $sidebarTransaction)
+                @php $product = $sidebarTransaction->order?->product; @endphp
+                @if($product)
+                    <li class="transaction-sidebar-item">
+                        <a href="{{ route('transaction.show', ['transaction_id' => $sidebarTransaction->id]) }}" class="sidebar-product-name">
+                            {{ $product->item_name }}
+                        </a>
+                    </li>
+                @endif
+            @endforeach
         </ul>
     </div>
     <div class="transaction-main">
@@ -267,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const initInputTextarea = () => {
         const inputArea = document.querySelector('.transaction-input');
         if (!inputArea) return;
-        const storageKey = "message_draft_{{ $transaction->id }}";
+        const storageKey = "message_draft_{{ auth()->id() }}_{{ $transaction->id }}";
         const saved = localStorage.getItem(storageKey);
         if (saved) inputArea.value = saved;
 
